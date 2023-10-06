@@ -104,7 +104,7 @@ const prepareWebhookAttributes = (
 const checkIfBodyIsAVariable = (body: string) => /^{{.+}}$/.test(body)
 
 const parseWebhookAttributes =
-  (state: SessionState, answers: AnswerInSessionState[] , block) =>
+  (state: SessionState, answers: AnswerInSessionState[] , block: WebhookBlock | ZapierBlock | MakeComBlock | PabblyConnectBlock | FlowwiseBlock ) =>
   async (webhook: Webhook): Promise<ParsedWebhook | undefined> => {
     if (!webhook.url || !webhook.method) return
     const { typebot } = state.typebotsQueue[0]
